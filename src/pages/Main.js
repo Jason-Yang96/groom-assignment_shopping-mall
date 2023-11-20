@@ -30,7 +30,7 @@ const Main = () => {
 		}
 		return true;
 	};
-	// !: Study the flow of filtering the products based on the filtering...
+	// !Study the flow of filtering the products based on the filtering...
 	const handleCategoryClick = (category) => {
 		setSelectedCategory(category);
 	};

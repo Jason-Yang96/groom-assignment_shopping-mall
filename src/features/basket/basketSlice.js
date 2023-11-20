@@ -13,12 +13,14 @@ const basketSlice = createSlice({
 	//Prb12: basketCount needs to count the number of unique value of product
 	//Sol: Add conditional statement. If the unique item already exist in the store, then just return current state.
 	// if not, then pust new item in the basket state of the store
+
+	//!Study check how to use the spread operator, findIndex
 	reducers: {
 		basketAdd(state, action) {
 			if (state.map((item) => item.id).includes(action.payload.id)) {
 				return state;
 			} else {
-				state.push(action.payload);
+				state.push({ ...action.payload, count: 1 });
 			}
 		},
 		/* Prb15: Redux reducer function should be pure function, meaning that they should not modify the existing state(immutability)
@@ -27,8 +29,38 @@ const basketSlice = createSlice({
 		basketDelete(state, action) {
 			return state.filter((item) => item.id !== action.payload.id);
 		},
+		countUp(state, action) {
+			const index = state.findIndex(
+				(item) => item.id === action.payload.id
+			);
+			if (index !== -1) {
+				return [
+					...state.slice(0, index),
+					{ ...state[index], count: state[index].count + 1 },
+					...state.slice(index + 1),
+				];
+			}
+			return state;
+		},
+		countDown(state, action) {
+			const index = state.findIndex(
+				(item) => item.id === action.payload.id
+			);
+			if (index !== -1 && state[index].count > 1) {
+				return [
+					...state.slice(0, index),
+					{ ...state[index], count: state[index].count - 1 },
+					...state.slice(index + 1),
+				];
+			}
+			return state;
+		},
+		emptyBasket(state, action) {
+			return [];
+		},
 	},
 });
 
-export const { basketAdd, basketDelete } = basketSlice.actions;
+export const { basketAdd, basketDelete, countUp, countDown, emptyBasket } =
+	basketSlice.actions;
 export default basketSlice.reducer;

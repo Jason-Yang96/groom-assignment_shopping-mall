@@ -26,3 +26,8 @@
 .item-delete-button-container{
     flex:1;
 }
+
+.calculation-result-with-buy-btn {
+    display: flex;
+    justify-content: end;
+}

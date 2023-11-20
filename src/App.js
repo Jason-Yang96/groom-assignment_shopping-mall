@@ -7,6 +7,7 @@ import { Route, Routes, Outlet } from 'react-router-dom';
 import Login from './pages/Login';
 import Detail from './pages/Detail';
 import Basket from './pages/Basket';
+import PaymentDone from './pages/PaymentDone';
 
 // Navbar and Footer are default components to every page. Set the layout
 
@@ -41,6 +42,10 @@ function App() {
 					<Route
 						path='basket'
 						element={<Basket />}
+					/>
+					<Route
+						path='payment'
+						element={<PaymentDone />}
 					/>
 				</Route>
 			</Routes>
