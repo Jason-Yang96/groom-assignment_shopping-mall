@@ -5,24 +5,41 @@ section {
 }
 .category-container {
     display: flex;
+    align-items: center;
     width: 50%;
 }
 .category {
     margin: 0 10px;
+    height: 50px;
     text-align: center;
     cursor: pointer;
     box-shadow: 0 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex: 1;
+    font-weight: 400;
+    
 }
 
 .category:hover {
     background-color: #007bff;
 }
-.category.active {
+.active {
     background-color: #007bff;
+    color: white;
 }
-
+.truncate {
+    width: 170px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 0 20px 0 20px;
+}
 /* Prb6: after applying wrapping to the product-table, the whole product is in the center of the page
 => S: thinking... */
 .products-table {
@@ -67,4 +84,14 @@ section {
     border: none;
     cursor: pointer;
     border-radius: 20px;
+}
+.img-container {
+    display: flex;
+    align-items: center;
+}
+.button-price-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
 }

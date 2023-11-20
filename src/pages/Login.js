@@ -27,20 +27,17 @@ const Login = () => {
 			switch (err.code) {
 				case 'auth/weak-password':
 					setErrorMsg('More than 6 digits');
-					alert(errorMsg);
 					break;
 				case 'auth/invalid-email':
 					setErrorMsg('Wrong E-Mail Address');
-					alert(errorMsg);
 					break;
 				case 'auth/email-already-in-use':
 					setErrorMsg('Alreay Registed Account');
-					alert(errorMsg);
 					break;
 				default:
 					setErrorMsg('Logging-In Error');
-					alert(errorMsg);
 			}
+			alert(errorMsg);
 		}
 	};
 
@@ -56,34 +53,36 @@ const Login = () => {
 	};
 
 	return (
-		<div className='log-in-card'>
-			<h2>Login</h2>
-			<form className='log-in-form'>
-				<label>Email:</label>
-				<input
-					type='email'
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
+		<div className='log-in-card-container'>
+			<div className='log-in-card'>
+				<h2>Login</h2>
+				<form className='log-in-form'>
+					<label>Email</label>
+					<input
+						type='email'
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
+					/>
 
-				<label>Password:</label>
-				<input
-					type='password'
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
+					<label>Password</label>
+					<input
+						type='password'
+						value={password}
+						onChange={(e) => setPassword(e.target.value)}
+					/>
 
-				<button
-					type='button'
-					onClick={handleLogin}>
-					Login
-				</button>
-				<button
-					type='button'
-					onClick={handleCreateAccount}>
-					Create
-				</button>
-			</form>
+					<button
+						type='button'
+						onClick={handleCreateAccount}>
+						Create
+					</button>
+					<button
+						type='button'
+						onClick={handleLogin}>
+						Login
+					</button>
+				</form>
+			</div>
 		</div>
 	);
 };

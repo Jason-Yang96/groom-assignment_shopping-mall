@@ -83,8 +83,8 @@ const Main = () => {
 								alt='product'
 							/>
 						</div>
-						<span>{product.title}</span>
-						<div>
+						<span className='truncate'>{product.title}</span>
+						<div className='button-price-container'>
 							{/* Prb10: after click the below button, the page moves to detail page
 							 => Sol: */}
 							<button
