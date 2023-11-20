@@ -1,3 +1,5 @@
+// Prb13: abrupt firebase problem.
+//=>Sol : Keep in mind that .env file has to be in the root of the app project directory
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
 import {

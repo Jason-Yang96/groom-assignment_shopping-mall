@@ -2,10 +2,8 @@ import axios from '../api/axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { handleAddProduct } from './Detail';
-// import { fetchAdd } from '../features/product/productSlice';
+import { basketAdd } from '../features/basket/basketSlice';
 import './Main.css';
-// import { useDispatch } from 'react-redux';
 
 const Main = () => {
 	const dispatch = useDispatch();
@@ -16,6 +14,10 @@ const Main = () => {
 	useEffect(() => {
 		fetchProduct();
 	}, []);
+
+	const handleAddProduct = (id, category, image, title, price) => {
+		dispatch(basketAdd({ id, category, image, title, price }));
+	};
 
 	const fetchProduct = async () => {
 		try {
@@ -74,11 +76,13 @@ const Main = () => {
 					<div
 						className='product'
 						key={product.id}>
-						<img
-							onClick={() => navigate(`/${product.id}`)}
-							src={product.image}
-							alt='product'
-						/>
+						<div className='img-container'>
+							<img
+								onClick={() => navigate(`/${product.id}`)}
+								src={product.image}
+								alt='product'
+							/>
+						</div>
 						<span>{product.title}</span>
 						<div>
 							{/* Prb10: after click the below button, the page moves to detail page
@@ -86,7 +90,6 @@ const Main = () => {
 							<button
 								onClick={() =>
 									handleAddProduct(
-										dispatch,
 										product.id,
 										product.category,
 										product.image,
@@ -94,7 +97,7 @@ const Main = () => {
 										product.price
 									)
 								}>
-								장바구니에 담기
+								Add to Basket
 							</button>
 							<span>{`$ ${product.price}`}</span>
 						</div>

@@ -44,11 +44,15 @@ section {
 .product:hover {
     scale: 1.02;
 }
+.product .container {
+    width: 180px;
+    height: 280px;
+}
 .product img {
     width: 100%;
-    height: auto;
-    max-height: 280px;
+    max-height: 230px;
     object-fit: cover;
+    background-position: center;
 }
 .product img:hover {
     cursor: pointer;

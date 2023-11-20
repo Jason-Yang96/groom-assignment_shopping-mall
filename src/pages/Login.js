@@ -12,7 +12,7 @@ const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errorMsg, setErrorMsg] = useState('');
-	const [isLogged, setIsLogged] = useState(false);
+	// const [isLogged, setIsLogged] = useState(false);
 
 	const navigate = useNavigate();
 
@@ -48,7 +48,7 @@ const Login = () => {
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
 			console.log('Logged in successfully');
-			setIsLogged(true);
+			// setIsLogged(true);
 			navigate('/');
 		} catch (error) {
 			console.error('Error logging in:', error.message);

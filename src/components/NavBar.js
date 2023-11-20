@@ -8,9 +8,8 @@ import { useSelector } from 'react-redux';
 import Modal from './Modal';
 
 const NavBar = () => {
-	//Prb12: basketCount needs to count the number of unique value of product
 	const basketCount = useSelector((state) => state.basket.length);
-	console.log(basketCount);
+	// console.log(basketCount);
 	const linkStyle = {
 		textDecoration: 'none',
 		color: 'inherit',

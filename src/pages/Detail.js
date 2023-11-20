@@ -54,7 +54,14 @@ const Detail = () => {
 						}>
 						Add to Basket
 					</button>
-					<button onClick={navigate('/basket')}>Go to Basket</button>
+					{/* Prb14: I got an error message like this: You should call navigate() in a React.useEffect(), not when your component is first rendered
+					 => Sol: Change the form of function to arrow function.
+					 This problem was resolved with stackoverflow searching. It was pretty self-explanatory problem. 
+					 Not calling navigate function when the component is rendered means that I need to call navigate when buttons clicked.
+					 But first when rendered navigate was activated. It needed buffered place. */}
+					<button onClick={() => navigate('/basket')}>
+						Go to Basket
+					</button>
 				</div>
 			</div>
 		</div>
@@ -62,13 +69,3 @@ const Detail = () => {
 };
 
 export default Detail;
-export const handleAddProduct = (
-	dispatch,
-	id,
-	category,
-	image,
-	title,
-	price
-) => {
-	dispatch(basketAdd({ id, category, image, title, price }));
-};
