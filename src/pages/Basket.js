@@ -28,7 +28,7 @@ const Basket = () => {
 	};
 	const handleBuy = () => {
 		dispatch(emptyBasket());
-		navigate('/');
+		navigate('/payment');
 	};
 	const totalExpense = basketState.reduce(
 		(total, item) => total + parseFloat(item.price) * item.count,
