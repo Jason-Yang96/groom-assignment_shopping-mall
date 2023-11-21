@@ -7,20 +7,21 @@ import { GrLogin } from 'react-icons/gr';
 import { IoLogOut } from 'react-icons/io5';
 import { useSelector, useDispatch } from 'react-redux';
 import { logOut } from '../features/basket/isLoggedSlice';
+import { setOpen } from '../features/basket/isModalOpenSlice';
 import Modal from './Modal';
 
 const NavBar = () => {
+	const dispatch = useDispatch();
 	const basketCount = useSelector((state) => state.basket.length);
 	const isLoggedState = useSelector((state) => state.isLogged);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const dispatch = useDispatch();
+	const isModalOpenState = useSelector((state) => state.isModalOpen);
 	// console.log(basketCount);
 	const linkStyle = {
 		textDecoration: 'none',
 		color: 'inherit',
 	};
 	const handleModalOpen = () => {
-		setIsModalOpen(true);
+		dispatch(setOpen());
 	};
 
 	return (
@@ -74,7 +75,7 @@ const NavBar = () => {
 
 			{/* Prb17: modal z-index...  
 			=> Sol: you need to keep it in mind that one's z-index counldn't be higher than parent's z-index */}
-			{isModalOpen && (
+			{isModalOpenState && (
 				<Modal
 					style={{
 						position: 'fixed',

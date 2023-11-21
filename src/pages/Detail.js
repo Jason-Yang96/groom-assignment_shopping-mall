@@ -29,11 +29,13 @@ const Detail = () => {
 
 	return (
 		<div className='product-container'>
-			<img
-				className='product-img'
-				src={product.image}
-				alt='product'
-			/>
+			<div className='product-img-container'>
+				<img
+					className='product-img'
+					src={product.image}
+					alt='product'
+				/>
+			</div>
 			<div className='product-info-container'>
 				<div className='product-info'>
 					<span>{product.category}</span>

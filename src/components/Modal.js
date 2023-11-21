@@ -1,11 +1,18 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './Modal.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import useOnClickOutside from '../hooks/useOnClickOutside';
+import { setClose } from '../features/basket/isModalOpenSlice';
 
 const Modal = ({ style }) => {
 	const basketState = useSelector((state) => state.basket);
 	const navigate = useNavigate();
+	const dispatch = useDispatch();
+	const ref = useRef();
+	useOnClickOutside(ref, () => {
+		dispatch(setClose());
+	});
 	const totalExpense = basketState.reduce(
 		(total, item) => total + parseFloat(item.price) * item.count,
 		0
@@ -13,6 +20,7 @@ const Modal = ({ style }) => {
 	return (
 		<div
 			style={style}
+			ref={ref}
 			className='modal-container'>
 			<div className='basket-title-container'>
 				<h1 className='basket-title'>Basket</h1>
@@ -25,7 +33,7 @@ const Modal = ({ style }) => {
 								className='basket-list-item-container'
 								key={item.id}>
 								<div className='item-container'>
-									<div className='img-container'>
+									<div className='img'>
 										<img
 											className='item-image'
 											src={item.image}
