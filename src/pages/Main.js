@@ -11,6 +11,7 @@ const Main = () => {
 	const [selectedCategory, setSelectedCategory] = useState('all');
 	// Prb1: infinite re-rendering => Sol: input empty dependency array
 	const navigate = useNavigate();
+
 	useEffect(() => {
 		fetchProduct();
 	}, []);

@@ -1,6 +1,7 @@
 import React from 'react';
 import './Basket.css';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { MdOutlineDelete } from 'react-icons/md';
 import {
 	basketDelete,
@@ -8,7 +9,6 @@ import {
 	countDown,
 	emptyBasket,
 } from '../features/basket/basketSlice';
-import { useNavigate } from 'react-router-dom';
 
 // I have to bring unique value from store. Now the same products was added repeatedly
 const Basket = () => {

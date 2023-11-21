@@ -7,15 +7,17 @@ import {
 	signInWithEmailAndPassword,
 	createUserWithEmailAndPassword,
 } from './filebase'; // Adjust the path accordingly
+import { useDispatch, useSelector } from 'react-redux';
+import { logIn } from '../features/basket/isLoggedSlice';
 
 const Login = () => {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [errorMsg, setErrorMsg] = useState('');
 	// const [isLogged, setIsLogged] = useState(false);
-
+	const isLoggedState = useSelector((state) => state.isLogged);
 	const navigate = useNavigate();
-
+	const dispatch = useDispatch();
 	const handleCreateAccount = async () => {
 		try {
 			setErrorMsg('');
@@ -44,8 +46,11 @@ const Login = () => {
 	const handleLogin = async () => {
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
+			// Prb15: got true value when tried login twice. Make it happen at once
+			dispatch(logIn());
 			console.log('Logged in successfully');
-			// setIsLogged(true);
+			console.log(isLoggedState);
+
 			navigate('/');
 		} catch (error) {
 			console.error('Error logging in:', error.message);

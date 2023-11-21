@@ -3,13 +3,13 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = false;
 
 const isLoggedSlice = createSlice({
-	name: 'islogged',
+	name: 'isLogged',
 	initialState,
 	reducers: {
-		logIn(state, action) {
+		logIn(state) {
 			return true;
 		},
-		logOut(state, action) {
+		logOut(state) {
 			return false;
 		},
 	},

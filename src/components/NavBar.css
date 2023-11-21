@@ -32,9 +32,10 @@ header {
     position: absolute;
     top: -7px;
     right: -5px;
-    height: 12px;
-    width: 12px;
+    height: 15px;
+    width: 15px;
     font-size: 10px;
+    font-weight: 200;
     background-color: red;
     border-radius: 50%;
     text-align: center;
@@ -42,7 +43,7 @@ header {
     align-items: center;
     justify-content: center;
 }
-.modal {
-    position: absolute;
-    top: 20px;
+
+.logout-icon {
+    cursor: pointer;
 }
